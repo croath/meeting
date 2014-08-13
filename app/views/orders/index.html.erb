@@ -1,0 +1,29 @@
+<div class="panel panel-info">
+  <div class="panel-heading">空闲房间</div>
+  <div class="panel-body">在这里快速预约</div>
+  <ul class="nav nav-pills nav-stacked" style="width: 96%; margin-left: 2%; margin-bottom: 20px;">
+  <% @empty_rooms.each do |room| %>
+    <li class="active">
+      <a href="#">
+        <span class="badge pull-right"><%= room.description %></span>
+        <%= room.name %>
+      </a>
+    </li>
+  <% end %>
+  </ul>
+</div>
+
+<div class="panel panel-success">
+  <div class="panel-heading">正在进行</div>
+  <div class="panel-body">正在进行的会议</div>
+    <% @current_orders.each do |order| %>
+    <div class="btn-group"  style="width: 96%; margin-left: 2%;">
+      <button type="button" class="btn btn-default" style="width: 33%"><%= order.room.name %></button>
+      <button type="button" class="btn btn-default" style="width: 33%"><%= order.username %></button>
+      <button type="button" class="btn btn-default" style="width: 33%"><%= order.title %></button>
+    </div>
+    <div class="progress" style="width: 95%; margin-left: 2%; margin-top: 3px;">
+      <div class="progress-bar progress-bar-striped active" role="progressbar" style="width: <%= order.progress %>%"></div>
+    </div>
+  <% end %>
+</div>

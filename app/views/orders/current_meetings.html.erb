@@ -1,0 +1,23 @@
+<h1>正在进行</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>申请人</th>
+      <th>主题</th>
+      <th>房间</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @orders.each do |order| %>
+      <tr>
+        <td><%= order.username %></td>
+        <td><%= order.title %></td>
+        <td><%= order.room.name %></td>
+        <td><%= link_to 'Destroy', order, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
