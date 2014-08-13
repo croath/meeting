@@ -1,8 +1,6 @@
 <%= form_for(@order) do |f| %>
   <% if @order.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@order.errors.count, "error") %> prohibited this order from being saved:</h2>
-
+    <div id="error_explanation" class="alert alert-danger" role="alert">
       <ul>
       <% @order.errors.full_messages.each do |message| %>
         <li><%= message %></li>
@@ -11,27 +9,28 @@
     </div>
   <% end %>
 
-  <div class="field">
-     <%= f.collection_select :room_id, Room.all, :id, :name %>
+  <div class="field" style="margin-bottom: 10px;">
+    会议室：
+    <%= f.collection_select :room_id, Room.all, :id, :desc %>
   </div>
 
-  <div class="field">
-    <%= f.label :username %><br>
-    <%= f.text_field :username %>
+  <div class="input-group" style="margin-bottom: 10px;">
+    <span class="input-group-addon">申请人</span>
+    <%= f.text_field :username, type: 'text', class: 'form-control' %>
+  </div>
+  <div class="input-group" style="margin-bottom: 10px;">
+    <span class="input-group-addon">会议主题</span>
+    <%= f.text_field :title, type: 'text', class: 'form-control' %>
   </div>
   <div class="field">
-    <%= f.label :title %><br>
-    <%= f.text_area :title %>
-  </div>
-  <div class="field">
-    <%= f.label :start_time %><br>
+    开始时间：
     <%= f.datetime_select :start_time %>
   </div>
   <div class="field">
-    <%= f.label :end_time %><br>
+    结束时间：
     <%= f.datetime_select :end_time %>
   </div>
-  <div class="actions">
-    <%= f.submit %>
+  <div class="actions" style="width: 100%">
+    <%= f.submit '提交', class: 'btn btn-success', style: 'width: 100%'%>
   </div>
 <% end %>
