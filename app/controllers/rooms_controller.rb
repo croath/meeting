@@ -7,6 +7,14 @@ class RoomsController < ApplicationController
     @rooms = Room.all
   end
 
+  def status
+    @room = Room.find(params[:id])
+    puts @room.orders.first.start_time.class
+    # @day_orders = @room.orders.map{|order| order if order.start_time.to_s(format = :number)[0..7] == params[:day] &&
+      #  order.end_time.to_s(format = :time) > DateTime.now.to_s(format = :time)}.compact
+    @day_orders = @room.orders.map{|order| order if order.start_time.to_s(format = :number)[0..7] == params[:day]}.compact
+  end
+
   # GET /rooms/1
   # GET /rooms/1.json
   def show

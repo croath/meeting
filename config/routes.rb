@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   get 'orders/current_meetings'
   resources :orders
 
+  get 'rooms/:id/status/:day' => 'rooms#status'
   resources :rooms
 
   # The priority is based upon order of creation: first created -> highest priority.

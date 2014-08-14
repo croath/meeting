@@ -13,7 +13,8 @@
     会议室：
     <%= f.collection_select :room_id, Room.all, :id, :desc %>
   </div>
-
+  <div id="statusDiv">
+  </div>
   <div class="input-group" style="margin-bottom: 10px;">
     <span class="input-group-addon">申请人</span>
     <%= f.text_field :username, type: 'text', class: 'form-control' %>
@@ -33,4 +34,33 @@
   <div class="actions" style="width: 100%">
     <%= f.submit '提交', class: 'btn btn-success', style: 'width: 100%'%>
   </div>
+
+  <script>
+    var myDiv = document.getElementById("statusDiv");
+    function request_room_status(){
+      $(myDiv).empty();
+      $.getJSON( "/rooms/" + document.getElementById("order_room_id").value + "/status/" + new Date().toJSON().slice(0,10).replace(/-/g, '') + ".json", function( data ) {
+        var items = [];
+
+        $.each( data, function(i, dict) {
+          var one_item = '';
+          $.each( dict, function(key, val) {
+            if (key == "username") {
+              one_item += "<h3><span class='label label-info'>" + val + " : ";
+            } else if (key == "start_time") {
+              one_item += val + " - ";
+            } else {
+              one_item += val + "</span></h3>";
+            }
+          });
+          items.push(one_item);
+        });
+
+        $(items.join("")).appendTo(myDiv);
+      });
+    }
+
+    document.getElementById("order_room_id").onchange = request_room_status
+    window.onload = request_room_status
+  </script>
 <% end %>

@@ -8,4 +8,12 @@ class Order < ActiveRecord::Base
     progress = (progress * 100).to_i.to_s
     progress
   end
+
+  def easy_start_time
+    self.start_time.to_s(format = :time)
+  end
+
+  def easy_end_time
+    self.end_time.to_s(format = :time)
+  end
 end
