@@ -1,5 +1,30 @@
+require 'date'
 class Order < ActiveRecord::Base
   belongs_to :room, :inverse_of => :orders
+
+  validate :same_day, :not_cross
+
+  def same_day
+    if !(Time.at(start_time).to_date === Time.at(end_time).to_date)
+      errors.add(:start_time, '开始时间和结束时间只能在同一天')
+    end
+  end
+
+  def not_cross
+    day_orders = self.room.orders.map{|order| order if Time.at(order.start_time).to_date === Time.at(start_time).to_date}.compact
+    puts day_orders
+    for order in day_orders
+      puts start_time
+      puts end_time
+      if (start_time < order.start_time && end_time > order.end_time) ||
+        (start_time > order.start_time && end_time < order.end_time) ||
+        (start_time > order.start_time && start_time < order.end_time) ||
+        (end_time > order.start_time && end_time < order.end_time)
+        errors.add(:start_time, '与其他会议时间冲突')
+        return
+      end
+    end
+  end
 
   def progress
     now = DateTime.now.to_i

@@ -61,6 +61,19 @@
     }
 
     document.getElementById("order_room_id").onchange = request_room_status
-    window.onload = request_room_status
+    $(document).ready(function () {
+      $.urlParam = function(name){
+        var results = new RegExp('[\?&amp;]' + name + '=([^&amp;#]*)').exec(window.location.href);
+        if (results == null) {
+          return null;
+        }
+        return results[1] || 0;
+      }
+      room_id = $.urlParam('room');
+      if (room_id != null) {
+        $("#order_room_id").val(room_id);
+      }
+      request_room_status();
+    });
   </script>
 <% end %>

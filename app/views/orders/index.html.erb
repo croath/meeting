@@ -4,7 +4,7 @@
   <ul class="nav nav-pills nav-stacked" style="width: 96%; margin-left: 2%; margin-bottom: 20px;">
   <% @empty_rooms.each do |room| %>
     <li class="active">
-      <a href="#">
+      <a href="/orders/new?room=<%= room.id %>">
         <span class="badge pull-right"><%= room.description %></span>
         <%= room.name %>
       </a>
