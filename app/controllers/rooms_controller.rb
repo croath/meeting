@@ -9,8 +9,8 @@ class RoomsController < ApplicationController
 
   def status
     @room = Room.find(params[:id])
-     @day_orders = @room.orders.map{|order| order if order.start_time.to_s(format = :number)[0..7] == params[:day] &&
-        order.end_time.to_s(format = :time) > DateTime.now.to_s(format = :time)}.compact
+    @day_orders = @room.orders.map{|order| order if order.start_time.to_s(format = :number)[0..7] == params[:day] &&
+      order.end_time.to_s(format = :time) > DateTime.now.to_s(format = :time)}.compact
   end
 
   # GET /rooms/1
