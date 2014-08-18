@@ -13,16 +13,6 @@
     会议室：
     <%= f.collection_select :room_id, Room.all, :id, :desc %>
   </div>
-  <div id="statusDiv">
-  </div>
-  <div class="input-group" style="margin-bottom: 10px;">
-    <span class="input-group-addon">申请人</span>
-    <%= f.text_field :username, type: 'text', class: 'form-control' %>
-  </div>
-  <div class="input-group" style="margin-bottom: 10px;">
-    <span class="input-group-addon">会议主题</span>
-    <%= f.text_field :title, type: 'text', class: 'form-control' %>
-  </div>
   <div class="field">
     开始时间：
     <%= f.datetime_select :start_time %>
@@ -31,17 +21,27 @@
     结束时间：
     <%= f.datetime_select :end_time %>
   </div>
+  <div class="input-group" style="margin-bottom: 10px;">
+    <span class="input-group-addon">申请人</span>
+    <%= f.text_field :username, type: 'text', class: 'form-control' %>
+  </div>
   <div class="actions" style="width: 100%">
     <%= f.submit '提交', class: 'btn btn-success', style: 'width: 100%'%>
+  </div>
+  <div id="statusDiv">
   </div>
 
   <script>
     var myDiv = document.getElementById("statusDiv");
+    var yearSel = document.getElementById("order_start_time_1i");
+    var monthSel = document.getElementById("order_start_time_2i");
+    var daySel = document.getElementById("order_start_time_3i");
     function request_room_status(){
       $(myDiv).empty();
-      $.getJSON( "/rooms/" + document.getElementById("order_room_id").value + "/status/" + new Date().toJSON().slice(0,10).replace(/-/g, '') + ".json", function( data ) {
+      var dateStr = '' + yearSel.value + (monthSel.value < 10 ? ('0' + monthSel.value) : monthSel.value) + daySel.value;
+      $.getJSON( "/rooms/" + document.getElementById("order_room_id").value + "/status/" + dateStr + ".json", function( data ) {
         var items = [];
-
+        items.push('<p>当日计划日程:</p>');
         $.each( data, function(i, dict) {
           var one_item = '';
           $.each( dict, function(key, val) {
@@ -61,6 +61,10 @@
     }
 
     document.getElementById("order_room_id").onchange = request_room_status
+    yearSel.onchange = request_room_status
+    monthSel.onchange = request_room_status
+    daySel.onchange = request_room_status
+
     $(document).ready(function () {
       $.urlParam = function(name){
         var results = new RegExp('[\?&amp;]' + name + '=([^&amp;#]*)').exec(window.location.href);
