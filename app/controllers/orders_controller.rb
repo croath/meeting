@@ -20,6 +20,7 @@ class OrdersController < ApplicationController
 
   def current_meetings
     current_time = DateTime.now
+    @pre_orders = Order.where('end_time > ?', current_time)
     @orders = Order.where('? between start_time and end_time', current_time)
   end
 
