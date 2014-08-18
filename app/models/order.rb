@@ -2,6 +2,10 @@ require 'date'
 class Order < ActiveRecord::Base
   belongs_to :room, :inverse_of => :orders
 
+  validates :start_time, presence: true
+  validates :end_time, presence: true
+  validates :username, presence: true
+  validates :room_id, presence: true
   validate :same_day, :not_cross
 
   def same_day
