@@ -7,7 +7,8 @@
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
-<body>
+<body style="height: 100%;margin:0;padding:0;">
+  <div style="height: 100%;">
   <nav class="navbar navbar-default" role="navigation">
     <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
@@ -31,5 +32,9 @@
   <div style="width: 96%; margin-left: 2%;">
     <%= yield %>
   </div>
+</div>
+  <blockquote style="position:absolute;bottom: 5px;">
+    <footer>Drived by <a href="mailto:liuzhenfu@mmbang.net">Platform Dept</a>. Iusses & Contribution: <a href="https://github.com/croath/meeting">GitHub</a></footer>
+  </blockquote>
 </body>
 </html>
