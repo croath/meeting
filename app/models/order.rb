@@ -6,6 +6,7 @@ class Order < ActiveRecord::Base
   validates :end_time, presence: true
   validates :username, presence: true
   validates :room_id, presence: true
+  validates :title, presence: true
   validate :same_day, :not_cross
 
   def same_day

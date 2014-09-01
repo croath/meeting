@@ -19,7 +19,7 @@
     <% @current_orders.each do |order| %>
     <div class="btn-group"  style="width: 96%; margin-left: 2%;">
       <button type="button" class="btn btn-default" style="width: 33%"><%= order.room.name %></button>
-      <button type="button" class="btn btn-default" style="width: 33%"><%= order.username %></button>
+      <button type="button" class="btn btn-default" style="width: 33%"><%= order.username %> <%= order.title %></button>
       <button type="button" class="btn btn-default" style="width: 33%"><%= order.easy_end_time %> 结束</button>
     </div>
     <div class="progress" style="width: 95%; margin-left: 2%; margin-top: 3px; margin-bottom: 20px;">
