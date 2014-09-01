@@ -20,7 +20,7 @@
     <div class="btn-group"  style="width: 96%; margin-left: 2%;">
       <button type="button" class="btn btn-default" style="width: 33%"><%= order.room.name %></button>
       <button type="button" class="btn btn-default" style="width: 33%"><%= order.username %> <%= order.title %></button>
-      <button type="button" class="btn btn-default" style="width: 33%"><%= order.easy_end_time %> 结束</button>
+      <button type="button" class="btn btn-default" style="width: 33%"><%= order.easy_start_time %> - <%= order.easy_end_time %></button>
     </div>
     <div class="progress" style="width: 95%; margin-left: 2%; margin-top: 3px; margin-bottom: 20px;">
       <div class="progress-bar progress-bar-striped active" role="progressbar" style="width: <%= order.progress %>%"></div>

@@ -5,7 +5,7 @@
     <div class="btn-group"  style="width: 96%; margin-left: 2%; margin-bottom: 20px;">
       <button type="button" class="btn btn-default" style="width: 25%"><%= order.room.name %></button>
       <button type="button" class="btn btn-default" style="width: 25%"><%= order.username %> <%= order.title %></button>
-      <button type="button" class="btn btn-default" style="width: 25%"><%= order.easy_end_time %> 结束</button>
+      <button type="button" class="btn btn-default" style="width: 25%"><%= order.easy_start_time %> - <%= order.easy_end_time %></button>
       <%= link_to '取消/结束', order, method: :delete, data: { confirm: '确定取消/结束会议？' }, class: 'btn btn-danger', type: 'button', style: 'width: 25%'%>
     </div>
   <% end %>
@@ -17,7 +17,7 @@
     <div class="btn-group"  style="width: 96%; margin-left: 2%; margin-bottom: 20px;">
       <button type="button" class="btn btn-default" style="width: 25%"><%= order.room.name %></button>
       <button type="button" class="btn btn-default" style="width: 25%"><%= order.username %> <%= order.title %></button>
-      <button type="button" class="btn btn-default" style="width: 25%"><%= order.easy_end_time %> 结束</button>
+      <button type="button" class="btn btn-default" style="width: 25%"><%= order.easy_start_time %> - <%= order.easy_end_time %></button>
       <%= link_to '取消/结束', order, method: :delete, data: { confirm: '确定取消/结束会议？' }, class: 'btn btn-danger', type: 'button', style: 'width: 25%'%>
     </div>
   <% end %>
