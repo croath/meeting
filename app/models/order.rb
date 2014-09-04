@@ -46,4 +46,8 @@ class Order < ActiveRecord::Base
   def easy_end_time
     self.end_time.to_s(format = :time)
   end
+
+  def create_date_time
+    self.created_at.to_s(format = :db)
+  end
 end

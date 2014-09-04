@@ -8,6 +8,7 @@ Bundler.require(*Rails.groups)
 
 module Meeting
   class Application < Rails::Application
+    config.i18n.default_locale = :zh_cn
     config.active_record.default_timezone = :local
     config.time_zone = 'Beijing'
     # Settings in config/environments/* take precedence over those specified here.

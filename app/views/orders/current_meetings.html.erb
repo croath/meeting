@@ -3,10 +3,11 @@
   <div class="panel-body">正在进行的会议</div>
     <% @orders.each do |order| %>
     <div class="btn-group"  style="width: 96%; margin-left: 2%; margin-bottom: 20px;">
-      <button type="button" class="btn btn-default" style="width: 25%"><%= order.room.name %></button>
-      <button type="button" class="btn btn-default" style="width: 25%"><%= order.username %> <%= order.title %></button>
-      <button type="button" class="btn btn-default" style="width: 25%"><%= order.easy_start_time %> - <%= order.easy_end_time %></button>
-      <%= link_to '取消/结束', order, method: :delete, data: { confirm: '确定取消/结束会议？' }, class: 'btn btn-danger', type: 'button', style: 'width: 25%'%>
+      <button type="button" class="btn btn-default" style="width: 10%;white-space: normal;"><%= order.room.name %></button>
+      <button type="button" class="btn btn-default" style="width: 20%;white-space: normal;"><%= order.username %> <%= order.title %></button>
+      <button type="button" class="btn btn-default" style="width: 30%;white-space: normal;">预订时间： <%= order.create_date_time %></button>
+      <button type="button" class="btn btn-default" style="width: 20%;white-space: normal;"><%= order.easy_start_time %> - <%= order.easy_end_time %></button>
+      <%= link_to '取消/结束', order, method: :delete, data: { confirm: '确定取消/结束会议？'}, class: 'btn btn-danger', type: 'button', style: 'width: 20%;white-space: normal;'%>
     </div>
   <% end %>
 </div>
@@ -15,10 +16,11 @@
   <div class="panel-body">所有计划中的会议</div>
     <% @pre_orders.each do |order| %>
     <div class="btn-group"  style="width: 96%; margin-left: 2%; margin-bottom: 20px;">
-      <button type="button" class="btn btn-default" style="width: 25%"><%= order.room.name %></button>
-      <button type="button" class="btn btn-default" style="width: 25%"><%= order.username %> <%= order.title %></button>
-      <button type="button" class="btn btn-default" style="width: 25%"><%= order.easy_start_time %> - <%= order.easy_end_time %></button>
-      <%= link_to '取消/结束', order, method: :delete, data: { confirm: '确定取消/结束会议？' }, class: 'btn btn-danger', type: 'button', style: 'width: 25%'%>
+      <button type="button" class="btn btn-default" style="width: 10%;white-space: normal;"><%= order.room.name %></button>
+      <button type="button" class="btn btn-default" style="width: 20%;white-space: normal;"><%= order.username %> <%= order.title %></button>
+      <button type="button" class="btn btn-default" style="width: 30%;white-space: normal;">预订时间： <%= order.create_date_time %></button>
+      <button type="button" class="btn btn-default" style="width: 20%;white-space: normal;"><%= order.easy_start_time %> - <%= order.easy_end_time %></button>
+      <%= link_to '取消/结束', order, method: :delete, data: { confirm: '确定取消/结束会议？' }, class: 'btn btn-danger', type: 'button', style: 'width: 20%;white-space: normal;'%>
     </div>
   <% end %>
 </div>
