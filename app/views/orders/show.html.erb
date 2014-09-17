@@ -1,24 +1,24 @@
-<p id="notice"><%= notice %></p>
+<% unless notice.nil? %>
+<div class="alert alert-success" role="alert"><%= notice %></div>
+<% end %>
 
-<p>
-  <strong>Username:</strong>
-  <%= @order.username %>
-</p>
+<ul class="list-group">
+  <li class="list-group-item">
+    <strong>申请人:</strong>
+    <%= @order.username %>
+  </li>
+  <li class="list-group-item">
+    <strong>手机号:</strong>
+    <%= @order.title %>
+  </li>
+  <li class="list-group-item">
+    <strong>开始时间:</strong>
+    <%= @order.easy_start_time %>
+  </li>
+  <li class="list-group-item">
+    <strong>结束时间:</strong>
+    <%= @order.easy_end_time %>
+  </li>
+</ul>
 
-<p>
-  <strong>Title:</strong>
-  <%= @order.title %>
-</p>
-
-<p>
-  <strong>Start time:</strong>
-  <%= @order.start_time %>
-</p>
-
-<p>
-  <strong>End time:</strong>
-  <%= @order.end_time %>
-</p>
-
-<%= link_to 'Edit', edit_order_path(@order) %> |
-<%= link_to 'Back', orders_path %>
+<%= link_to '返回', orders_path, class: 'btn btn-default', type: 'button', style: 'width: 100%;'%>
