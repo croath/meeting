@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'north' => 'page#north'
+
   get 'orders/current_meetings'
   resources :orders
 
