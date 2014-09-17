@@ -48,6 +48,6 @@ class Order < ActiveRecord::Base
   end
 
   def create_date_time
-    self.created_at.to_s(format = :db)
+    self.created_at.to_s(format = :short)
   end
 end
