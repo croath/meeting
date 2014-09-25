@@ -17,12 +17,8 @@ class Order < ActiveRecord::Base
 
   def not_cross
     day_orders = self.room.orders.map{|order| order if Time.at(order.start_time).to_date === Time.at(start_time).to_date}.compact
-    puts day_orders
     for order in day_orders
-      puts start_time
-      puts end_time
-      if (start_time < order.start_time && end_time > order.end_time) ||
-        (start_time > order.start_time && end_time < order.end_time) ||
+      if (start_time <= order.start_time && end_time >= order.end_time) ||
         (start_time > order.start_time && start_time < order.end_time) ||
         (end_time > order.start_time && end_time < order.end_time)
         errors.add(:start_time, '与其他会议时间冲突')
@@ -49,5 +45,9 @@ class Order < ActiveRecord::Base
 
   def create_date_time
     self.created_at.to_s(format = :short)
+  end
+
+  def meeting_date
+    self.start_time.strftime("%m - %d")
   end
 end
